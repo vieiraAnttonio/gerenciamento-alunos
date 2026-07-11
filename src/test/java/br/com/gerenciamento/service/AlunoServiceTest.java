@@ -25,21 +25,16 @@ public class AlunoServiceTest {
     @Test
     public void getById() {
         Aluno aluno = new Aluno();
+        aluno.setId(1L);
         aluno.setNome("Vinicius");
         aluno.setTurno(Turno.NOTURNO);
         aluno.setCurso(Curso.ADMINISTRACAO);
         aluno.setStatus(Status.ATIVO);
         aluno.setMatricula("123456");
-
         this.serviceAluno.save(aluno);
 
-        Aluno alunoRetorno =
-                this.serviceAluno.getById(aluno.getId());
-
-        Assert.assertEquals(
-                "Vinicius",
-                alunoRetorno.getNome()
-        );
+        Aluno alunoRetorno = this.serviceAluno.getById(1L);
+        Assert.assertTrue(alunoRetorno.getNome().equals("Vinicius"));
     }
 
     @Test
